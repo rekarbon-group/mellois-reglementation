@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REKARBON × Mellois-en-Poitou — Cadre réglementaire MRV · Juin 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #F4F1EB;
+  --ink:     #1A1A14;
+  --forest:  #2D4A2D;
+  --moss:    #4A7A3A;
+  --sand:    #E8E0CC;
+  --mist:    #7A8A7A;
+  --gold:    #8A7A1A;
+  --amber:   #C47A2D;
+  --rule:    #1A1A1422;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+header {
+  padding: 1.8rem 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+}
+
+.logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--forest); }
+.logo-sub { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--mist); letter-spacing: 2px; margin-top: 2px; }
+.badge { font-family: 'DM Mono', monospace; font-size: 0.62rem; padding: 0.3rem 0.8rem; border: 1px solid var(--forest); color: var(--forest); letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; }
+
+/* HERO */
+.hero { padding: 8vh 4vw 6vh; max-width: 1400px; margin: 0 auto; }
+
+.hero-kicker { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 4px; text-transform: uppercase; color: var(--mist); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.hero-kicker::before { content: ''; display: block; width: 40px; height: 1px; background: var(--forest); }
+
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 6.5rem); font-weight: 900; line-height: 0.96; letter-spacing: -2px; color: var(--ink); margin-bottom: 2rem; }
+.hero-title span { color: var(--forest); display: block; }
+
+.hero-subtitle { font-size: 1.15rem; color: var(--mist); max-width: 620px; font-weight: 300; line-height: 1.75; margin-bottom: 3rem; }
+
+.hero-numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 900px; background: var(--rule); }
+.hero-num { background: var(--bg); padding: 1.4rem 1.8rem; }
+.hero-num-val { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--forest); line-height: 1; }
+.hero-num-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 2px; text-transform: uppercase; color: var(--mist); margin-top: 0.5rem; }
+
+/* DIVIDER */
+.divider { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+/* SECTION */
+.section { padding: 6vh 4vw; max-width: 1400px; margin: 0 auto; }
+
+.section-label { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 4px; text-transform: uppercase; color: var(--forest); margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+/* ALERT */
+.alert { border-left: 4px solid var(--forest); background: var(--sand); padding: 2rem 2.5rem; margin-bottom: 3rem; position: relative; overflow: hidden; }
+.alert::before { content: '⚠'; position: absolute; right: 2rem; top: 1.5rem; font-size: 3rem; opacity: 0.07; }
+.alert-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--ink); }
+.alert-body { font-size: 0.93rem; color: #444; line-height: 1.75; }
+.alert-fine { margin-top: 1rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--forest); font-weight: 500; }
+
+/* PROFIL GRID */
+.profil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--rule); margin-bottom: 3rem; }
+.profil-cell { background: var(--bg); padding: 2.5rem; }
+.profil-cell.dark { background: var(--ink); color: var(--bg); }
+.profil-cell-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 3px; text-transform: uppercase; color: var(--mist); margin-bottom: 1rem; }
+.profil-cell.dark .profil-cell-label { color: #666; }
+.profil-cell-val { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--forest); line-height: 1.1; margin-bottom: 0.5rem; }
+.profil-cell.dark .profil-cell-val { color: #6AAA5A; }
+.profil-cell-sub { font-size: 0.87rem; color: #555; line-height: 1.65; }
+.profil-cell.dark .profil-cell-sub { color: #aaa; }
+
+/* REGS GRID */
+.regs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; background: var(--rule); margin-bottom: 3rem; }
+.reg-card { background: var(--bg); padding: 2.5rem; transition: background 0.2s; }
+.reg-card:hover { background: var(--sand); }
+.reg-tag { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 3px; text-transform: uppercase; padding: 0.22rem 0.55rem; border-radius: 2px; margin-bottom: 1rem; display: inline-block; }
+.tag-pcaet  { background: #2D4A2D18; color: var(--forest); border: 1px solid #2D4A2D33; }
+.tag-beges  { background: #4A7A3A18; color: var(--moss); border: 1px solid #4A7A3A33; }
+.tag-climat { background: #8A7A1A18; color: var(--gold); border: 1px solid #8A7A1A33; }
+.tag-dechets{ background: #C47A2D18; color: var(--amber); border: 1px solid #C47A2D33; }
+.tag-eu     { background: #2D4A2D18; color: var(--forest); border: 1px solid #2D4A2D33; }
+.tag-zan    { background: #1A1A1418; color: var(--ink); border: 1px solid #1A1A1433; }
+.tag-ademe  { background: #4A7A3A18; color: var(--moss); border: 1px solid #4A7A3A33; }
+
+.reg-deadline { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 2px; color: var(--forest); margin-bottom: 1rem; }
+.reg-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.3; }
+.reg-body { font-size: 0.88rem; color: #555; line-height: 1.72; margin-bottom: 1.5rem; }
+.reg-impact { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 1px; color: var(--forest); background: #2D4A2D11; padding: 0.5rem 0.75rem; border-left: 2px solid var(--forest); }
+.reg-source { margin-top: 1rem; }
+.reg-source a { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--mist); text-decoration: none; display: block; padding: 0.2rem 0; border-bottom: 1px solid var(--rule); transition: color 0.2s; }
+.reg-source a:hover { color: var(--forest); }
+
+/* TICKETS ADEME */
+.tickets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; background: var(--rule); margin-bottom: 3rem; }
+.ticket-card { background: var(--bg); padding: 2rem; }
+.ticket-amount { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--forest); margin-bottom: 0.25rem; }
+.ticket-rate { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--amber); letter-spacing: 2px; margin-bottom: 0.75rem; }
+.ticket-title { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
+.ticket-body { font-size: 0.83rem; color: #666; line-height: 1.6; }
+.ticket-deadline { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--forest); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--rule); }
+
+/* CHECKLIST */
+.checklist { list-style: none; margin: 1rem 0; }
+.checklist li { padding: 0.75rem 0; border-bottom: 1px solid var(--rule); display: flex; align-items: flex-start; gap: 1rem; font-size: 0.88rem; color: #444; line-height: 1.5; }
+.checklist li::before { content: '→'; color: var(--forest); font-family: 'DM Mono', monospace; font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; }
+.checklist li.ok::before { content: '✓'; color: var(--moss); }
+.checklist li.warn::before { content: '!'; color: var(--amber); }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 3rem; margin-bottom: 3rem; }
+.timeline::before { content: ''; position: absolute; left: 1rem; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+.tl-item { position: relative; padding-bottom: 3rem; }
+.tl-item::before { content: ''; position: absolute; left: -2.1rem; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--forest); }
+.tl-item.future::before { background: var(--sand); border: 1px solid var(--forest); }
+.tl-item.critical::before { background: var(--amber); }
+.tl-date { font-family: 'DM Mono', monospace; font-size: 0.63rem; letter-spacing: 2px; color: var(--forest); margin-bottom: 0.25rem; }
+.tl-item.critical .tl-date { color: var(--amber); }
+.tl-title { font-family: 'Playfair Display', serif; font-size: 1.08rem; font-weight: 700; margin-bottom: 0.5rem; }
+.tl-body { font-size: 0.85rem; color: #666; line-height: 1.65; max-width: 650px; }
+
+/* SOLUTION */
+.solution-block { background: var(--ink); color: var(--bg); padding: 4rem; margin-bottom: 2px; position: relative; overflow: hidden; }
+.solution-block::before { content: 'REKARBON'; position: absolute; right: -2rem; top: 50%; transform: translateY(-50%) rotate(-90deg); font-family: 'Playfair Display', serif; font-size: 8rem; font-weight: 900; color: #ffffff04; white-space: nowrap; pointer-events: none; }
+.solution-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 1.5rem; line-height: 1.2; }
+.solution-title span { color: #6AAA5A; }
+.solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.solution-item { border-top: 1px solid #ffffff20; padding-top: 1.5rem; }
+.solution-item-num { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: #6AAA5A; letter-spacing: 3px; margin-bottom: 0.75rem; }
+.solution-item-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--bg); }
+.solution-item-body { font-size: 0.83rem; color: #999; line-height: 1.65; }
+
+/* CTA */
+.cta-block { background: var(--forest); color: white; padding: 4rem; text-align: center; }
+.cta-title { font-family: 'Playfair Display', serif; font-size: 2.3rem; font-weight: 900; margin-bottom: 1rem; }
+.cta-sub { font-size: 0.97rem; opacity: 0.85; margin-bottom: 2.5rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+.cta-contact { font-family: 'DM Mono', monospace; font-size: 0.85rem; letter-spacing: 2px; color: white; text-decoration: none; border: 1px solid white; padding: 1rem 2.5rem; display: inline-block; transition: background 0.2s, color 0.2s; }
+.cta-contact:hover { background: white; color: var(--forest); }
+
+footer { padding: 2rem 4vw; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--mist); letter-spacing: 1px; flex-wrap: wrap; gap: 0.5rem; }
+
+@media (max-width: 768px) {
+  .hero-numbers { grid-template-columns: 1fr 1fr; }
+  .profil-grid { grid-template-columns: 1fr; }
+  .solution-block { padding: 2rem; }
+  .cta-block { padding: 3rem 2rem; }
+  footer { flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">REKARBON × Mellois-en-Poitou</div>
+    <div class="logo-sub">Obligations réglementaires · Collectivité territoriale · Juin 2026</div>
+  </div>
+  <div class="badge">Document confidentiel · Juin 2026</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-kicker">Communauté de Communes Mellois-en-Poitou — Ce que la réglementation impose</div>
+  <h1 class="hero-title">
+    Vous avez déjà<br>
+    <span>l'obligation.</span>
+    Il vous manque<br>la mesure certifiée.
+  </h1>
+  <p class="hero-subtitle">
+    La CC Mellois-en-Poitou est un EPCI de plus de 20 000 habitants en Nouvelle-Aquitaine.
+    Son PCAET vient d'être adopté. Six réglementations convergentes s'appliquent déjà —
+    ou s'appliqueront d'ici janvier 2027. Sans mesure physique certifiée et auditée,
+    chaque obligation devient un risque financier, juridique et réputationnel concret.
+    <strong>L'Omnibus CSRD n'exonère pas les collectivités. Il renforce l'exigence de preuve.</strong>
+  </p>
+  <div class="hero-numbers">
+    <div class="hero-num">
+      <div class="hero-num-val">~45 000</div>
+      <div class="hero-num-label">Habitants — EPCI Mellois</div>
+    </div>
+    <div class="hero-num">
+      <div class="hero-num-val">6</div>
+      <div class="hero-num-label">Réglementations convergentes</div>
+    </div>
+    <div class="hero-num">
+      <div class="hero-num-val">Jan. 2027</div>
+      <div class="hero-num-label">Déclencheur critique GHG Protocol</div>
+    </div>
+    <div class="hero-num">
+      <div class="hero-num-val">100 000€</div>
+      <div class="hero-num-label">Amende max BEGES récidive</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PROFIL -->
+<div class="section">
+  <div class="section-label">Profil réglementaire Mellois-en-Poitou</div>
+
+  <div class="alert">
+    <div class="alert-title">La CC Mellois-en-Poitou est directement concernée — et son PCAET vient de l'officialiser.</div>
+    <div class="alert-body">
+      En tant qu'EPCI à fiscalité propre de plus de 20 000 habitants, la CC Mellois-en-Poitou est soumise
+      au PCAET obligatoire (article L.229-26 du Code de l'environnement) et au BEGES-T territorial.
+      Son PCAET a été arrêté en décembre 2024, soumis à enquête publique mars-avril 2025,
+      et adopté en 2025-2026. Ce document engage désormais la collectivité sur des objectifs
+      chiffrés de réduction d'émissions — <strong>objectifs qui ne peuvent être démontrés
+      sans une infrastructure de mesure physique certifiée</strong>.
+      La gestion des déchets, compétence obligatoire de l'EPCI depuis la loi NOTRe 2015,
+      ajoute une couche supplémentaire d'obligations — notamment sur la traçabilité
+      et la valorisation des flux. Sans MRV certifié, le PCAET reste une déclaration d'intention
+      sans valeur probante pour les financeurs régionaux, l'État et l'Europe.
+    </div>
+    <div class="alert-fine">→ PCAET adopté 2025-2026 · BEGES-T obligatoire tous les 3 ans · Loi Climat &amp; Résilience article 35 — clause environnementale obligatoire dans les marchés publics depuis août 2026 · GHG Protocol LSR v1.0 au 1er janvier 2027</div>
+  </div>
+
+  <div class="profil-grid">
+    <div class="profil-cell dark">
+      <div class="profil-cell-label">Statut PCAET</div>
+      <div class="profil-cell-val">ADOPTÉ</div>
+      <div class="profil-cell-sub">PCAET arrêté en décembre 2024, enquête publique mars-avril 2025, adoption 2025-2026. La collectivité est désormais engagée sur des objectifs de réduction d'émissions opposables à ses financeurs et à l'État.</div>
+    </div>
+    <div class="profil-cell">
+      <div class="profil-cell-label">BEGES-T territorial</div>
+      <div class="profil-cell-val">Obligatoire</div>
+      <div class="profil-cell-sub">En tant qu'EPCI &gt;20 000 habitants, le BEGES-T est intégré au PCAET. Il couvre les émissions du territoire (agriculture, déchets, transport, énergie) — soit 85-95% des émissions réelles. Renouvellement tous les 3 ans.</div>
+    </div>
+    <div class="profil-cell">
+      <div class="profil-cell-label">Compétence déchets</div>
+      <div class="profil-cell-val">Obligatoire</div>
+      <div class="profil-cell-sub">Depuis la loi NOTRe 2015, la gestion des déchets ménagers et assimilés est une compétence obligatoire de l'EPCI. Cela inclut le PLPDMA (Plan Local de Prévention des Déchets Ménagers et Assimilés) et la traçabilité des flux via Trackdéchets.</div>
+    </div>
+    <div class="profil-cell dark">
+      <div class="profil-cell-label">Agriculture &amp; séquestration</div>
+      <div class="profil-cell-val">Secteur dominant</div>
+      <div class="profil-cell-sub">En territoire rural comme le Mellois, le secteur agricole peut représenter jusqu'à 50% des émissions totales de GES du territoire. L'outil ALDO (ADEME) calcule la séquestration carbone des sols et forêts — données obligatoires dans le PCAET.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- RÉGLEMENTATIONS -->
+<div class="section">
+  <div class="section-label">Les 6 réglementations qui s'appliquent au Mellois</div>
+
+  <div class="regs-grid">
+
+    <!-- PCAET -->
+    <div class="reg-card">
+      <span class="reg-tag tag-pcaet">PCAET</span>
+      <div class="reg-deadline">ADOPTÉ 2025-2026 · RÉVISION TOUS LES 6 ANS · BILAN MI-PARCOURS OBLIGATOIRE</div>
+      <div class="reg-title">Plan Climat-Air-Énergie Territorial</div>
+      <div class="reg-body">
+        Article L.229-26 du Code de l'environnement. Obligatoire pour tout EPCI &gt;20 000 habitants.
+        Le PCAET de la CC Mellois-en-Poitou a été élaboré depuis janvier 2023, arrêté en décembre 2024,
+        soumis à enquête publique mars-avril 2025, et adopté. Il engage la collectivité sur
+        <strong>six axes obligatoires</strong> : réduction des émissions GES, efficacité énergétique,
+        développement des ENR, adaptation au changement climatique, qualité de l'air, sobriété foncière.
+        Chaque axe doit être assorti d'indicateurs quantifiés et d'un suivi annuel.
+        <strong>Sans mesure physique certifiée, les indicateurs restent déclaratifs</strong> —
+        insuffisants pour la vérification par l'État et les financeurs européens.
+      </div>
+      <div class="reg-impact">Impact Mellois : Le PCAET adopté crée des engagements opposables. Le bilan mi-parcours (3 ans) devra démontrer les réductions effectives d'émissions — ce qui requiert un MRV certifié, pas des estimations.</div>
+      <div class="reg-source">
+        <a href="https://www.melloisenpoitou.fr/la-collectivite/deliberations/2025/conseil-communautaire-3/19-juin-2025/2939-proces-verbal-58/file" target="_blank">→ Délibération CC Mellois — adoption PCAET juin 2025</a>
+        <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023080647" target="_blank">→ Article L.229-26 Code de l'environnement</a>
+        <a href="https://agirpourlatransition.ademe.fr/collectivites/conseils/amenagement/pcaet" target="_blank">→ ADEME — Guide PCAET collectivités</a>
+      </div>
+    </div>
+
+    <!-- BEGES-T -->
+    <div class="reg-card">
+      <span class="reg-tag tag-beges">BEGES-T</span>
+      <div class="reg-deadline">TOUS LES 3 ANS · AMENDE 50 000€ (100 000€ RÉCIDIVE) · PLATEFORME ADEME</div>
+      <div class="reg-title">Bilan GES Territorial — Patrimoine & Services</div>
+      <div class="reg-body">
+        Articles L.229-25 et R.229-47 du Code de l'environnement.
+        Le BEGES se décline en deux volets pour la CC Mellois :
+        <strong>BEGES-R</strong> (patrimoine et services de la collectivité — bâtiments, véhicules, agents)
+        pour les EPCI &gt;50 000 habitants ou &gt;250 agents,
+        et <strong>BEGES-T</strong> (territorial — ensemble des émissions du territoire)
+        obligatoirement intégré au PCAET pour les EPCI &gt;20 000 habitants.
+        Depuis le 1er janvier 2023, le <strong>Scope 3 est obligatoire</strong> :
+        déchets, achats, déplacements des agents, immobilisations.
+        Le bilan est publié sur bilans-ges.ademe.fr. Depuis 2023,
+        l'amende peut aller jusqu'à 50 000€ (100 000€ en récidive).
+        <strong>Depuis juin 2024, le défaut de BEGES peut entraîner l'exclusion des marchés publics.</strong>
+      </div>
+      <div class="reg-impact">Impact Mellois : Le BEGES-T intègre les émissions agricoles (jusqu'à 50% du total en territoire rural), les déchets, les transports. Sans données physiques sur ces flux, le Scope 3 reste estimatif et contestable par un auditeur accrédité.</div>
+      <div class="reg-source">
+        <a href="https://bilans-ges.ademe.fr/" target="_blank">→ Plateforme BEGES ADEME — Dépôt obligatoire</a>
+        <a href="https://www.reglementation-environnement.com/beges-bilan-ges-collectivites-entreprises-guide/" target="_blank">→ Guide BEGES collectivités 2026</a>
+        <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043978468" target="_blank">→ Article L.229-25 — Sanctions BEGES</a>
+      </div>
+    </div>
+
+    <!-- LOI CLIMAT -->
+    <div class="reg-card">
+      <span class="reg-tag tag-climat">Loi Climat</span>
+      <div class="reg-deadline">ARTICLE 35 EN VIGUEUR 22 AOÛT 2026 · PLPDMA OBLIGATOIRE · ENGRAIS SYNTHÈSE INTERDIT 2027</div>
+      <div class="reg-title">Loi Climat &amp; Résilience — Obligations collectivités</div>
+      <div class="reg-body">
+        La loi n°2021-1104 du 22 août 2021 impose plusieurs obligations directes aux collectivités.
+        <strong>Article 35 (en vigueur 22 août 2026)</strong> : clause environnementale vérifiable
+        obligatoire dans <em>tous</em> les marchés publics de la collectivité —
+        toute allégation environnementale dans un appel d'offres devra être substantiée
+        par une vérification indépendante.
+        <strong>Engrais de synthèse interdits au 1er janvier 2027</strong> sur les espaces
+        publics de la collectivité (prolongement de la loi Labbé).
+        <strong>PLPDMA obligatoire</strong> : Programme Local de Prévention des Déchets Ménagers
+        et Assimilés avec objectifs de réduction quantifiés et mesurables.
+        <strong>Biodiversité</strong> : obligation de téléverser les données brutes de biodiversité
+        sur les plateformes nationales lors de tout projet ou aménagement.
+      </div>
+      <div class="reg-impact">Impact Mellois : L'article 35 en vigueur depuis août 2026 impose que chaque marché public contienne une clause environnementale vérifiable. Sans infrastructure de mesure, la collectivité ne peut pas démontrer le respect de ces clauses.</div>
+      <div class="reg-source">
+        <a href="https://normaxis.group/clients/collectivite-territoriale" target="_blank">→ NORMAXIS — Article 35 loi Climat, obligations collectivités</a>
+        <a href="https://www.cnfpt.fr/sites/default/files/publication/document/guide_loi_climat_et_resilience.pdf" target="_blank">→ CNFPT — Guide loi Climat &amp; Résilience collectivités</a>
+        <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043956924" target="_blank">→ Loi n°2021-1104 du 22 août 2021 — Texte officiel</a>
+      </div>
+    </div>
+
+    <!-- DÉCHETS -->
+    <div class="reg-card">
+      <span class="reg-tag tag-dechets">Déchets &amp; REP</span>
+      <div class="reg-deadline">COMPÉTENCE OBLIGATOIRE · TRACKDÉCHETS OBLIGATOIRE · LOIS AGEC &amp; NOTRE</div>
+      <div class="reg-title">Gestion des déchets — Obligations EPCI &amp; traçabilité</div>
+      <div class="reg-body">
+        Depuis la <strong>loi NOTRe 2015</strong>, la gestion des déchets ménagers et assimilés
+        est une compétence obligatoire de l'EPCI (article L.2224-13 CGCT).
+        La <strong>loi AGEC (2020)</strong> impose :
+        la dématérialisation des bordereaux de suivi via <strong>Trackdéchets</strong>
+        (obligatoire depuis 2022 — 461 866 établissements, 20,4 M bordereaux dématérialisés),
+        des objectifs de réduction des déchets ménagers (-15% en 2030 vs 2010),
+        et des filières REP (Responsabilité Élargie du Producteur) étendues.
+        Les <strong>terres inertes et déchets de chantier</strong> — comme les 5 000 tonnes
+        de terres minérales du Mellois — relèvent du régime des déchets inertes
+        (article R.541-8 du Code de l'environnement) et doivent faire l'objet
+        d'une traçabilité complète et d'une valorisation prioritaire sur l'élimination.
+      </div>
+      <div class="reg-impact">Impact Mellois : Les 5 000 tonnes de terres inertes minérales constituent un flux à tracer obligatoirement via Trackdéchets. La valorisation par ERW permet de transformer ce passif réglementaire en actif carbone certifié — et de démontrer la conformité PLPDMA.</div>
+      <div class="reg-source">
+        <a href="https://trackdechets.beta.gouv.fr/" target="_blank">→ Trackdéchets — Plateforme nationale ADEME/MINAE</a>
+        <a href="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000041553759" target="_blank">→ Loi AGEC n°2020-105 du 10 février 2020</a>
+        <a href="https://www.collectivites-locales.gouv.fr/animer-les-territoires/environnement-et-urbanisme/environnement-energie-et-developpement-durable/les-dechets" target="_blank">→ Collectivités-locales.gouv — Compétence déchets EPCI</a>
+      </div>
+    </div>
+
+    <!-- GHG PROTOCOL -->
+    <div class="reg-card">
+      <span class="reg-tag tag-eu">GHG Protocol LSR</span>
+      <div class="reg-deadline">EFFECTIF 1ER JANVIER 2027 · STANDARD MONDIAL · FINANCEMENT ÉTAT &amp; EUROPE CONDITIONNÉ</div>
+      <div class="reg-title">GHG Protocol Land Sector &amp; Removals v1.0</div>
+      <div class="reg-body">
+        Nouveau standard mondial de comptabilité carbone publié par le World Resources Institute
+        et le WBCSD, <strong>effectif au 1er janvier 2027</strong>.
+        Il impose un monitoring physique continu et auditable pour toute revendication
+        de réduction ou de retrait d'émissions.
+        <strong>Pour une collectivité rurale comme le Mellois, c'est particulièrement structurant</strong> :
+        les émissions agricoles, forestières et liées aux sols — qui représentent la majorité
+        des émissions territoriales — devront être mesurées physiquement, pas estimées
+        à partir de facteurs moyens. Les bilans déclaratifs basés sur l'outil ALDO
+        seront structurellement insuffisants pour les auditeurs accrédités (VVB),
+        les financeurs régionaux (Région Nouvelle-Aquitaine, FEDER),
+        et les programmes européens (LIFE, Horizon Europe, LEADER).
+      </div>
+      <div class="reg-impact">Impact Mellois : Le PCAET adopté intègre des objectifs de séquestration carbone (agriculture, forêts, sols). Au 1er janvier 2027, ces objectifs devront être démontrés avec un MRV physique certifié — sous peine d'invalidation par les financeurs.</div>
+      <div class="reg-source">
+        <a href="https://ghgprotocol.org/land-sector-and-removals-guidance" target="_blank">→ GHG Protocol — Land Sector &amp; Removals Guidance</a>
+        <a href="https://www.wri.org/research/ghg-protocol-land-sector-removals-guidance" target="_blank">→ WRI — Présentation du standard v1.0</a>
+      </div>
+    </div>
+
+    <!-- ZAN & URBANISME -->
+    <div class="reg-card">
+      <span class="reg-tag tag-zan">ZAN &amp; PLUi</span>
+      <div class="reg-deadline">PLUi COMPATIBLE ZAN D'ICI 2027-2028 · SRADDET NOUVELLE-AQUITAINE OPPOSABLE</div>
+      <div class="reg-title">Zéro Artificialisation Nette — PLUi &amp; SRADDET</div>
+      <div class="reg-body">
+        La loi Climat &amp; Résilience impose l'objectif ZAN :
+        <strong>réduire de 50% le rythme d'artificialisation des sols d'ici 2031</strong>
+        (par rapport à 2011-2021), et atteindre zéro artificialisation nette en 2050.
+        Pour la CC Mellois-en-Poitou, le PLUi (Plan Local d'Urbanisme intercommunal)
+        devra être mis en compatibilité avec le SRADDET de Nouvelle-Aquitaine
+        d'ici 2027-2028. Cela impose une comptabilisation précise
+        des sols naturels, agricoles et forestiers (ENAF) et de leur évolution.
+        <strong>L'articulation avec le PCAET est structurante</strong> :
+        limiter l'artificialisation renforce la densification et la rénovation,
+        deux leviers majeurs pour atteindre les objectifs carbone du PCAET.
+        Sans mesure physique des sols, la conformité ZAN reste déclarative.
+      </div>
+      <div class="reg-impact">Impact Mellois : Mise en compatibilité PLUi-ZAN d'ici 2027-2028. Comptabilisation obligatoire des ENAF. Le PCAET doit être cohérent avec la contrainte foncière ZAN — les deux documents doivent s'appuyer sur les mêmes données physiques certifiées.</div>
+      <div class="reg-source">
+        <a href="https://reglementation-environnement.com/pcaet-plan-climat-collectivites-obligations-2026/" target="_blank">→ PCAET 2026 — Articulation ZAN et SRADDET</a>
+        <a href="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000043956924" target="_blank">→ Loi Climat &amp; Résilience — Titre VI ZAN</a>
+      </div>
+    </div>
+
+    <!-- DIRECTIVE ECGT -->
+    <div class="reg-card">
+      <span class="reg-tag tag-eu">Directive ECGT</span>
+      <div class="reg-deadline">APPLICATION EFFECTIVE SEPTEMBRE 2026 · COMMUNICATION INSTITUTIONNELLE CONCERNÉE</div>
+      <div class="reg-title">Empowering Consumers for Green Transition — Allégations vertes</div>
+      <div class="reg-body">
+        La directive européenne ECGT (UE 2024/825) transposée en droit français
+        interdit toute allégation environnementale non substantiée par une preuve indépendante.
+        <strong>Les collectivités sont directement concernées dans leur communication institutionnelle</strong> :
+        tout document officiel, délibération, site internet, communication aux habitants
+        mentionnant un engagement "bas-carbone", "neutre en carbone", "territoire durable"
+        ou équivalent doit être appuyé par des données vérifiables.
+        En parallèle, la <strong>Directive UE 2024/825</strong> impose aux États membres
+        (transposition mars 2027) que toute allégation environnementale formulée
+        par un acteur public dans ses appels d'offres soit substantiée par une
+        vérification indépendante — en cohérence directe avec l'article 35 de la loi Climat.
+      </div>
+      <div class="reg-impact">Impact Mellois : Le PCAET adopté engage la collectivité publiquement sur des objectifs climatiques. Toute communication sur ces objectifs — rapports annuels, site web, délibérations — devient soumise à l'exigence de preuve substantiée dès septembre 2026.</div>
+      <div class="reg-source">
+        <a href="https://eur-lex.europa.eu/eli/dir/2024/825/oj" target="_blank">→ Directive UE 2024/825 — Texte officiel</a>
+        <a href="https://normaxis.group/clients/collectivite-territoriale" target="_blank">→ NORMAXIS — Directive 2024/825 collectivités</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- TIMELINE -->
+<div class="section">
+  <div class="section-label">Calendrier réglementaire Mellois-en-Poitou</div>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-date">2015 — LOI NOTRE · EN VIGUEUR</div>
+      <div class="tl-title">Compétence déchets obligatoire EPCI</div>
+      <div class="tl-body">Depuis la loi NOTRe, la gestion des déchets ménagers et assimilés est une compétence obligatoire de la CC Mellois-en-Poitou. Cela inclut la traçabilité de tous les flux de déchets, dont les terres inertes issues des opérations de tri.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">JANVIER 2023 — EN VIGUEUR</div>
+      <div class="tl-title">Scope 3 obligatoire dans le BEGES-T</div>
+      <div class="tl-body">Depuis le décret du 1er juillet 2022, les émissions indirectes significatives (agriculture, achats, déplacements, déchets) sont obligatoires dans le BEGES-T intégré au PCAET. En territoire rural, le Scope 3 représente 70-85% des émissions totales.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">DÉCEMBRE 2024 — ACCOMPLI</div>
+      <div class="tl-title">PCAET arrêté par le conseil communautaire</div>
+      <div class="tl-body">Le conseil communautaire de la CC Mellois-en-Poitou a arrêté son projet de PCAET le 19 décembre 2024. Transmission pour avis au Préfet de Région Nouvelle-Aquitaine, au Conseil Régional et à l'Autorité Environnementale.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">MARS-AVRIL 2025 — ACCOMPLI</div>
+      <div class="tl-title">Enquête publique PCAET</div>
+      <div class="tl-body">Le projet de PCAET a été soumis à enquête publique du 25 mars au 28 avril 2025. Les observations du public et les avis des institutions ont été intégrés dans la version finale adoptée.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2025-2026 — ADOPTÉ</div>
+      <div class="tl-title">PCAET adopté — engagements opposables</div>
+      <div class="tl-body">Le PCAET est désormais adopté. La CC Mellois-en-Poitou est engagée sur des objectifs chiffrés de réduction des émissions GES, d'efficacité énergétique et de séquestration carbone. Ces engagements sont opposables aux financeurs régionaux et européens.</div>
+    </div>
+
+    <div class="tl-item future critical">
+      <div class="tl-date">22 AOÛT 2026 — DEADLINE IMMÉDIATE</div>
+      <div class="tl-title">Article 35 loi Climat — Clause environnementale dans tous les marchés publics</div>
+      <div class="tl-body">Entrée en vigueur de l'obligation de clause environnementale vérifiable dans tous les marchés publics de la collectivité. Sans infrastructure de mesure, la collectivité ne peut pas démontrer le respect de ces clauses lors d'un contrôle.</div>
+    </div>
+
+    <div class="tl-item future critical">
+      <div class="tl-date">SEPTEMBRE 2026 — DEADLINE</div>
+      <div class="tl-title">Directive ECGT — Fin des allégations vertes non prouvées</div>
+      <div class="tl-body">Application effective de la Directive ECGT : toute communication institutionnelle sur les engagements climatiques du Mellois doit être appuyée par des données vérifiables. Le PCAET adopté rend la collectivité particulièrement exposée.</div>
+    </div>
+
+    <div class="tl-item future critical">
+      <div class="tl-date">1ER JANVIER 2027 — DEADLINE CRITIQUE</div>
+      <div class="tl-title">GHG Protocol Land Sector & Removals v1.0 — Mesure physique obligatoire</div>
+      <div class="tl-body">Bascule mondiale : les bilans GES déclaratifs basés sur des facteurs d'émission moyens deviennent insuffisants pour les auditeurs accrédités et les financeurs. Pour une collectivité agricole comme le Mellois, c'est le déclencheur le plus structurant — les émissions agricoles et des sols devront être mesurées physiquement.</div>
+    </div>
+
+    <div class="tl-item future">
+      <div class="tl-date">2027-2028 — DEADLINE</div>
+      <div class="tl-title">PLUi compatible ZAN obligatoire</div>
+      <div class="tl-body">Mise en compatibilité du PLUi de la CC Mellois-en-Poitou avec les objectifs ZAN du SRADDET de Nouvelle-Aquitaine. Comptabilisation précise des ENAF et cohérence avec les objectifs carbone du PCAET.</div>
+    </div>
+
+    <div class="tl-item future">
+      <div class="tl-date">2028 — BILAN MI-PARCOURS PCAET</div>
+      <div class="tl-title">Premier bilan mi-parcours du PCAET — résultats à démontrer</div>
+      <div class="tl-body">Le PCAET adopté devra faire l'objet d'un bilan mi-parcours. La collectivité devra démontrer les progrès réels — réductions d'émissions effectives, séquestration carbone mesurée, efficacité énergétique quantifiée. Sans MRV certifié en place depuis 2026-2027, ce bilan ne pourra pas être produit.</div>
+    </div>
+
+    <div class="tl-item future">
+      <div class="tl-date">2030 — OBJECTIFS SNBC &amp; PCAET</div>
+      <div class="tl-title">-50% émissions bâtiment · -40% énergie tertiaire · objectifs PCAET</div>
+      <div class="tl-body">Convergence des objectifs nationaux (SNBC 3, Décret Tertiaire) et territoriaux (PCAET Mellois). Toutes les réductions devront être démontrées avec des données physiques certifiées pour accéder aux financements régionaux et européens de la prochaine génération.</div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- TICKETS ADEME -->
+<div class="section">
+  <div class="section-label">Aides et tickets ADEME mobilisables par la collectivité</div>
+
+  <div class="alert">
+    <div class="alert-title">Le Mellois peut mobiliser jusqu'à plusieurs centaines de milliers d'euros d'aides ADEME — à condition d'avoir un PCAET adopté et un MRV en place.</div>
+    <div class="alert-body">
+      L'adoption du PCAET est la condition d'éligibilité à la plupart des dispositifs ADEME pour les collectivités.
+      La CC Mellois-en-Poitou est désormais éligible. Le programme phare est <strong>Territoire Engagé Transition Écologique (TETE)</strong>,
+      qui conditionne l'accès au Fonds Chaleur, aux aides Qualité de l'Air, aux AMO PCAET
+      et aux cofinancements CRTE. Un MRV certifié renforce considérablement la solidité des dossiers.
+    </div>
+    <div class="alert-fine">→ PCAET adopté = condition d'éligibilité · TETE = programme structurant · Fonds Chaleur + AACT-AIR + AMO PCAET mobilisables dès 2026</div>
+  </div>
+
+  <div class="tickets-grid">
+
+    <div class="ticket-card">
+      <div class="ticket-amount">50–70%</div>
+      <div class="ticket-rate">TAUX DE COFINANCEMENT ADEME</div>
+      <div class="ticket-title">AMO PCAET — Assistance à Maîtrise d'Ouvrage</div>
+      <div class="ticket-body">L'ADEME finance 50 à 70% des missions d'AMO pour l'élaboration et la mise en œuvre du PCAET. Pour une CC comme le Mellois, la mission type coûte ~30 000€ — soit une aide de 15 000 à 21 000€. Maintenant que le PCAET est adopté, la mise en œuvre et le suivi sont éligibles.</div>
+      <div class="ticket-deadline">→ Éligible immédiatement · Dossier via ADEME Nouvelle-Aquitaine</div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-amount">4 ans</div>
+      <div class="ticket-rate">DURÉE D'ACCOMPAGNEMENT TETE</div>
+      <div class="ticket-title">Programme TETE — Territoire Engagé Transition Écologique</div>
+      <div class="ticket-body">Le programme TETE finance le recrutement ou l'accompagnement d'un conseiller dédié pendant 4 ans pour piloter la transition écologique du territoire. Il couvre : énergie, déchets, mobilité, qualité de l'air. Condition : PCAET adopté — ce qui est désormais le cas pour le Mellois.</div>
+      <div class="ticket-deadline">→ Dossier ADEME · Label Climat-Air-Énergie ou Économie Circulaire</div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-amount">Variable</div>
+      <div class="ticket-rate">SELON PUISSANCE INSTALLATION</div>
+      <div class="ticket-title">Fonds Chaleur Renouvelable — ENR thermiques</div>
+      <div class="ticket-body">Le Fonds Chaleur ADEME finance les réseaux de chaleur renouvelable, les installations biomasse, géothermie, solaire thermique. Conditionné à l'existence d'un PCAET approuvé. Sans PCAET approuvé, l'accès est bloqué — avec le PCAET adopté du Mellois, le verrou est levé.</div>
+      <div class="ticket-deadline">→ AAP Fonds Chaleur 2026 · ADEME Nouvelle-Aquitaine</div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-amount">AACT-AIR</div>
+      <div class="ticket-rate">APPEL À PROJETS 2026 OUVERT</div>
+      <div class="ticket-title">Aide à l'Action des Collectivités pour la Qualité de l'Air</div>
+      <div class="ticket-body">Le programme AACT-AIR 2026 finance les études pour élaborer des programmes d'actions qualité de l'air à horizon 2030-2050. Les études éligibles peuvent s'appuyer sur le PCAET. Pour le Mellois (territoire agricole avec émissions ammoniac), c'est particulièrement pertinent.</div>
+      <div class="ticket-deadline">→ AAP ADEME AACT-AIR 2026 · Objectifs OMS qualité de l'air</div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-amount">LEADER</div>
+      <div class="ticket-rate">FONDS EUROPÉEN FEADER · GAL POITOU</div>
+      <div class="ticket-title">GAL LEADER — Financement projets innovants ruraux</div>
+      <div class="ticket-body">En tant que territoire rural, le Mellois est éligible au programme LEADER via le Groupe d'Action Local (GAL) du Poitou. LEADER finance les projets innovants de transition écologique en milieu rural, avec des taux de cofinancement pouvant atteindre 70-80%. La cohérence avec le PCAET est un critère de sélection.</div>
+      <div class="ticket-deadline">→ Via GAL local · Cohérence PCAET requise · Période 2023-2027</div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-amount">CEE P6</div>
+      <div class="ticket-rate">PÉRIODE 2026-2030 · NOUVEAUX OBJECTIFS</div>
+      <div class="ticket-title">Certificats d'Économies d'Énergie — Période 6</div>
+      <div class="ticket-body">La 6e période des CEE (2026-2030, décret n°2025-1048) fixe des objectifs renforcés d'économies d'énergie. Les collectivités peuvent valoriser leurs projets d'efficacité énergétique (bâtiments publics, éclairage, véhicules) sous forme de primes CEE. Les projets structurants peuvent générer plusieurs dizaines de milliers d'euros.</div>
+      <div class="ticket-deadline">→ Via obligés CEE · Pas de dépôt direct · Via agrégateur ou ADEME</div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-amount">CRTE</div>
+      <div class="ticket-rate">CONTRAT RELANCE ET TRANSITION ÉCOLOGIQUE</div>
+      <div class="ticket-title">CRTE — Contrat État-Collectivité transition écologique</div>
+      <div class="ticket-body">Le CRTE est l'outil de contractualisation pluriannuel entre l'État et la collectivité pour la transition écologique. Il mobilise les financements de l'ADEME, de l'ANAH, de l'ANRU, du CEREMA. La nouvelle génération de CRTE (mandature 2026) est en cours de préparation — le PCAET adopté du Mellois est la base documentaire.</div>
+      <div class="ticket-deadline">→ Préfecture de la Vienne · Nouvelle génération CRTE 2026</div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-amount">ClimAgri®</div>
+      <div class="ticket-rate">OUTIL ADEME AGRICULTURE · DIAGNOSTIC GRATUIT</div>
+      <div class="ticket-title">ClimAgri® — Diagnostic énergétique agricole territorial</div>
+      <div class="ticket-body">L'ADEME propose l'outil ClimAgri® pour évaluer les consommations énergétiques de l'agriculture, les émissions GES et les stocks de carbone dans les sols. Gratuit pour les collectivités, il constitue la base du volet agricole du PCAET. Pour le Mellois (agriculture dominant), c'est un outil central.</div>
+      <div class="ticket-deadline">→ Contacte ADEME Nouvelle-Aquitaine · Diagnostic gratuit · Couplable avec ALDO carbone des sols</div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CE QUE LE MELLOIS PEUT FAIRE / NE PEUT PAS SE PERMETTRE -->
+<div class="section">
+  <div class="section-label">État des lieux — Ce qui est possible, ce qui est risqué</div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--rule); margin-bottom:3rem;">
+    <div style="background:var(--bg); padding:2.5rem;">
+      <div style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:3px; color:var(--mist); margin-bottom:1rem; text-transform:uppercase;">Ce que le Mellois peut démontrer avec un MRV certifié</div>
+      <ul class="checklist">
+        <li class="ok">Objectifs PCAET suivis avec indicateurs physiques certifiés — bilan mi-parcours 2028 solide</li>
+        <li class="ok">BEGES-T Scope 3 agricole mesuré physiquement — conforme GHG Protocol LSR v1.0 dès janvier 2027</li>
+        <li class="ok">Traçabilité déchets inertes certifiée — conformité Trackdéchets + valorisation ERW documentée</li>
+        <li class="ok">Clauses environnementales des marchés publics vérifiables — conformité article 35 loi Climat</li>
+        <li class="ok">Communication institutionnelle substantiée — conformité Directive ECGT septembre 2026</li>
+        <li class="ok">Dossiers ADEME renforcés — TETE, Fonds Chaleur, LEADER avec données physiques</li>
+        <li class="ok">Séquestration carbone sols et forêts mesurée — cohérence PCAET &amp; ZAN démontrée</li>
+        <li class="ok">Accès aux financements FEDER/LIFE/Horizon Europe conditionnés à une stratégie climatique mesurée</li>
+      </ul>
+    </div>
+    <div style="background:var(--sand); padding:2.5rem;">
+      <div style="font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:3px; color:var(--mist); margin-bottom:1rem; text-transform:uppercase;">Ce que le Mellois risque sans mesure physique certifiée</div>
+      <ul class="checklist">
+        <li class="warn">BEGES-T déclaratif invalidé par un auditeur VVB accrédité au 1er janvier 2027</li>
+        <li class="warn">Amende 50 000€ (100 000€ récidive) si BEGES non conforme ou insuffisamment documenté</li>
+        <li class="warn">Exclusion des marchés publics depuis juin 2024 en cas de défaut de BEGES</li>
+        <li class="warn">Objectifs PCAET non démontrables au bilan mi-parcours 2028 — risque de mise en demeure préfectorale</li>
+        <li class="warn">Communication "territoire durable" sanctionnable DGCCRF dès septembre 2026 (ECGT)</li>
+        <li class="warn">Accès bloqué au Fonds Chaleur et aux cofinancements CRTE sans données certifiées</li>
+        <li class="warn">Dossiers FEDER/LEADER/Horizon Europe fragilisés sans MRV démontrable</li>
+        <li class="warn">5 000 tonnes de terres inertes = passif réglementaire non valorisé, coût de gestion permanent</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- SOLUTION REKARBON -->
+<div class="solution-block">
+  <div class="solution-title">
+    REKARBON transforme vos obligations<br>en <span>actifs certifiés.</span>
+  </div>
+  <p style="color:#999; max-width:700px; font-size:0.97rem; line-height:1.75; margin-top:1rem;">
+    Nous déployons une infrastructure de mesure physique certifiée cryptographiquement
+    sur votre territoire — capteurs IoT terrain, Raspberry Pi edge, protocole Ed25519.
+    Chaque donnée est signée à la source et chaînée en SHA-256.
+    Votre BEGES-T Scope 3, votre suivi PCAET, votre traçabilité déchets —
+    tous alimentés par des preuves physiques, pas des déclarations.
+    Conformes au GHG Protocol LSR v1.0 dès le 1er janvier 2027.
+  </p>
+
+  <div class="solution-grid">
+    <div class="solution-item">
+      <div class="solution-item-num">01 — MESURE TERRAIN</div>
+      <div class="solution-item-title">Capteurs IoT sur vos sites</div>
+      <div class="solution-item-body">Déploiement Raspberry Pi edge sur sites stratégiques : déchèteries, bâtiments publics, sites agricoles pilotes. Mesure continue des flux énergétiques, des émissions et des stocks carbone. Compatible avec vos systèmes existants.</div>
+    </div>
+    <div class="solution-item">
+      <div class="solution-item-num">02 — CERTIFICATION CRYPTOGRAPHIQUE</div>
+      <div class="solution-item-title">Ed25519 + Hash-chain SHA-256</div>
+      <div class="solution-item-body">Chaque mesure signée cryptographiquement à la source. Toute falsification est mathématiquement détectable. Conforme aux exigences d'audit des VVB accrédités et du GHG Protocol LSR v1.0.</div>
+    </div>
+    <div class="solution-item">
+      <div class="solution-item-num">03 — REPORTING AUTOMATISÉ</div>
+      <div class="solution-item-title">ADEME · Trackdéchets · PCAET</div>
+      <div class="solution-item-body">Export direct vers bilans-ges.ademe.fr, Trackdéchets, et les tableaux de bord PCAET. Zéro ressaisie. Données prêtes pour les dossiers CRTE, FEDER, LEADER et les bilans mi-parcours.</div>
+    </div>
+    <div class="solution-item">
+      <div class="solution-item-num">04 — VALORISATION CARBONE</div>
+      <div class="solution-item-title">Terres inertes → crédits certifiés</div>
+      <div class="solution-item-body">Les 5 000 tonnes de terres inertes minérales deviennent un actif : valorisation ERW certifiée Puro.earth, biochar VM0044, amélioration sols VM0042. Revenus carbone partagés avec la collectivité. Zéro coût de mise en décharge.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <div class="cta-title">Votre PCAET est adopté. Il ne manque que la preuve.</div>
+  <p class="cta-sub">
+    REKARBON déploie son infrastructure sur un site pilote Mellois-en-Poitou en 30 jours.
+    Premier BEGES-T Scope 3 physique livré. Conformité GHG Protocol 2027 anticipée.
+    Dossiers ADEME renforcés dès 2026.
+  </p>
+  <a href="mailto:support@rekarbon.com?subject=Mellois-en-Poitou × REKARBON — Demande de contact MRV" class="cta-contact">
+    PRENDRE CONTACT → support@rekarbon.com
+  </a>
+</div>
+
+<footer>
+  <span>REKARBON GROUP SAS · OLYA SAS · 229 Rue Saint-Honoré, 75001 Paris · SIREN 945 090 413</span>
+  <span>Document confidentiel compilé juin 2026 · Sources réglementaires publiques vérifiées</span>
+  <span>rekarbon.com</span>
+</footer>
+
+</body>
+</html>
